@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#000000">
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body cz-shortcut-listen="true">
+        <noscript> You need to enable JavaScript to run this app.</noscript>
+        <div id="root">
+            <form id="homePage">
+                <div class="MuiGrid-root makeStyles-grid-1 MuiGrid-container">
+                    <div
+                        class="MuiGrid-root makeStyles-grid-105 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12">
+                        <div class="makeStyles-card-106">
+                            <div class="makeStyles-cardHeader-110 makeStyles-primaryCardHeader-118">
+                                <h4 class="makeStyles-cardTitleWhite-171">Document Scanner</h4>
+                            </div>
+                            <div class="makeStyles-cardBody-120 ">
+                            </div>
+                            <div class="makeStyles-cardFooter-inline">
+                                <button
+                                class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text"
+                                id="scan-documents">
+                                    <span class="MuiButton-label">Scan Documents</span>
+                                    <span class="MuiTouchRipple-root"></span>
+                                </button>
+                                <button
+                                class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text"
+                                id="get-documents">
+                                    <span class="MuiButton-label">Get Documents</span>
+                                    <span class="MuiTouchRipple-root"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <form id="camScannerPage" class="hide">
+                <div class="MuiGrid-root makeStyles-grid-1 MuiGrid-container">
+                    <div
+                        class="MuiGrid-root makeStyles-grid-105 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12">
+                        <div class="makeStyles-card-106">
+                            <div class="makeStyles-cardHeader-110 makeStyles-primaryCardHeader-118">
+                                <h4 class="makeStyles-cardTitleWhite-171">Document Scanner</h4>
+                            </div>
+                            <div class="makeStyles-cardBody-120">
+                                <div class="bordered">
+                                    <video id="video" autoplay > </video>
+                                    <canvas id="canvas" width="720" height="720"></canvas>
+                                </div>
+                                <div class="makeStyles-cardFooter-inline">
+                                    <button
+                                    class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text"
+                                    id="flip-camera">
+                                        <span class="MuiButton-label">Flip Camera</span>
+                                        <span class="MuiTouchRipple-root"></span>
+                                    </button>
+                                    <button
+                                    class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text"
+                                    id="snap-photo">
+                                        <span class="MuiButton-label">Snap Photo</span>
+                                        <span class="MuiTouchRipple-root"></span>
+                                    </button>                                    
+                                    <button
+                                    class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text"
+                                    id="re-scan">
+                                        <span class="MuiButton-label">Re-Scan</span>
+                                        <span class="MuiTouchRipple-root"></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="candidate-details-form">
+                            
+                                <div class="makeStyles-cardBody-120">
+                                    <div class="MuiGrid-root makeStyles-grid-1 MuiGrid-container">
+                                        <div
+                                            class="MuiGrid-root makeStyles-grid-105 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-4">
+                                            <div
+                                                class="MuiFormControl-root  makeStyles-formControl-181 MuiFormControl-fullWidth">
+                                                <label
+                                                    class="MuiFormLabel-root MuiInputLabel-root makeStyles-labelRoot-176 MuiInputLabel-formControl MuiInputLabel-animated"
+                                                    data-shrink="false" for="candidate-name">Candiate Name</label>
+                                                <div class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-173 MuiInputBase-formControl MuiInput-formControl"
+                                                    required=""><input aria-invalid="false"
+                                                    class="MuiInputBase-input MuiInput-input" id="candidate-name"
+                                                    required="" type="text" value=""></div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="MuiGrid-root makeStyles-grid-105 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-4">
+                                            <div
+                                                class="MuiFormControl-root  makeStyles-formControl-181 MuiFormControl-fullWidth">
+                                                <label
+                                                    class="MuiFormLabel-root MuiInputLabel-root makeStyles-labelRoot-176 MuiInputLabel-formControl MuiInputLabel-animated"
+                                                    data-shrink="false" for="candidate-email">Candidate Email</label>
+                                                <div class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-173 MuiInputBase-formControl MuiInput-formControl"
+                                                    required=""><input aria-invalid="false"
+                                                    class="MuiInputBase-input MuiInput-input" id="candidate-email" required=""
+                                                    type="email" value=""></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div
+                                            class="MuiGrid-root makeStyles-grid-105 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-4">
+                                            <div
+                                                class="MuiFormControl-root  makeStyles-formControl-181 MuiFormControl-fullWidth">
+                                                <label
+                                                    class="MuiFormLabel-root MuiInputLabel-root makeStyles-labelRoot-176 MuiInputLabel-formControl MuiInputLabel-animated"
+                                                    data-shrink="false" for="document-name">Document Name</label>
+                                                <div class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-173 MuiInputBase-formControl MuiInput-formControl"
+                                                    required=""><input aria-invalid="false"
+                                                    class="MuiInputBase-input MuiInput-input" id="document-name" required=""
+                                                    type="text" value=""></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="makeStyles-cardFooter-235">
+                                    <button
+                                    class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text"
+                                    id="submit-candidate"><span class="MuiButton-label">Submit
+                                    Candidate</span><span class="MuiTouchRipple-root"></span></button>
+                                </div>
+                            </div>
+
+                            <div class="makeStyles-cardFooter-inline">                                
+                                <button
+                                class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text hide"
+                                id="download-pdf">
+                                    <span class="MuiButton-label">Download PDF</span>
+                                    <span class="MuiTouchRipple-root"></span>
+                                </button>
+                                
+                                <button
+                                class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text hide"
+                                id="download-jpeg">
+                                    <span class="MuiButton-label">Download JPEG</span>
+                                    <span class="MuiTouchRipple-root"></span>
+                                </button>
+
+                                <button
+                                class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text home-btn"
+                                id="go-home-scan">
+                                    <span class="MuiButton-label">Home</span>
+                                    <span class="MuiTouchRipple-root"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            
+            <form id="getDocumentsPage" class="hide">
+                <div class="MuiGrid-root makeStyles-grid-1 MuiGrid-container">
+                    <div
+                        class="MuiGrid-root makeStyles-grid-105 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-12">
+                        <div class="makeStyles-card-106">
+                            <div class="makeStyles-cardHeader-110 makeStyles-primaryCardHeader-118">
+                                <h4 class="makeStyles-cardTitleWhite-171">Document Scanner</h4>
+                            </div>
+                            <div class="makeStyles-cardBody-120 ">
+                                <div
+                                    class="MuiGrid-root makeStyles-grid-105 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-4">
+                                    <div
+                                        class="MuiFormControl-root  makeStyles-formControl-181 MuiFormControl-fullWidth">
+                                        <label
+                                            class="MuiFormLabel-root MuiInputLabel-root makeStyles-labelRoot-176 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                                            data-shrink="true" for="email-address">Candidate Email</label>
+                                        <div
+                                            class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-underline-173  MuiInputBase-formControl MuiInput-formControl">
+                                            <input aria-invalid="false"
+                                                class="MuiInputBase-input MuiInput-input  makeStyles-disabled-172"
+                                                 id="email-address" type="text"
+                                                value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="makeStyles-cardFooter-inline">
+                                <button
+                                class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text"
+                                id="get-data-email">
+                                    <span class="MuiButton-label">Get Data</span><span class="MuiTouchRipple-root"></span>
+                                </button>
+                                
+                                <button
+                                class="MuiButtonBase-root MuiButton-root makeStyles-button-123 makeStyles-primary-126 MuiButton-text home-btn"
+                                id="go-home-email">
+                                    <span class="MuiButton-label">Home</span><span class="MuiTouchRipple-root"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="makeStyles-card-106" id="candidate-details-data"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"></script>
+        <script src="http://mysqljs.com/mysql.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
