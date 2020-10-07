@@ -2,7 +2,7 @@ $(function() {
    
     var mainImg;
     
-    var shouldFaceUser = false;
+    var shouldFaceUser = true;
     var defaultsOpts = { 
         audio: false,
         video: true 
