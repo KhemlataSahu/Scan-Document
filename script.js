@@ -2,7 +2,7 @@ $(function() {
    
     var mainImg;
     
-    var shouldFaceUser = false;
+    var shouldFaceUser = true;
     var defaultsOpts = { 
         audio: false,
         video: true 
@@ -211,6 +211,87 @@ $(function() {
         shouldFaceUser = !shouldFaceUser;
         setTimeout(capture, 2000);
     });
+
+    // $('.tabs nav a').on('click',function() {
+    //     show_content($(this).index());
+       
+    //  });
+    //  $(document).on("click", ".tabs nav a" , function() {
+    //     show_content($(this).index());
+    // });
+    $(document).on("click", ".tabs nav a" , function() {
+        show_content($(this).index());
+    });
+    $(document).on("click", ".tabs .content a" , function() {
+        show_content($(this).index());
+    });
+    show_content(0);
+    function show_content(index) {
+         // Make the content visible
+         $('.tabs .content.visible').removeClass('visible');
+         $('.tabs .content:nth-of-type(' + (index + 1) +')').addClass('visible');
+         // Set the tab to selected
+         $('.tabs nav a.selected').removeClass('selected');
+        $('.tabs nav a:nth-of-type(' + (index + 1) +')').addClass('selected');
+    }
+    function show_content1(index) {
+        // Make the content visible
+        $('.tabs .content.visible').removeClass('visible');
+        $('.tabs .content:nth-of-type(' + (index + 1) +')').addClass('visible');
+        // Set the tab to selected
+        $('.tabs .content a.selected').removeClass('selected');
+       $('.tabs .content a:nth-of-type(' + (index + 1) +')').addClass('selected');
+   }
+    getAllDocument();
+       function getAllDocument(){
+            //-----------------------------------------------
+        var email = $('#email-address').val();
+        //candidate-details-data
+
+        $('#document-list').html('');
+        
+        var url = "http://3.20.222.19:8080/candidateDocument/search/emailId?emailId=test1@gmail.com";
+        var count = 0;
+        var caDocs = [];
+       // var candData = []
+        
+        var jsonObj = { 
+            emailId: email
+        };
+        var dataToSend = JSON.stringify(jsonObj);
+       // console.log("JSON "+ dataToSend);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {			 
+                //alert(this.responseText);
+                var resJSON = this.responseText;
+                var opDats = JSON.parse(resJSON);	
+                var eData= opDats['_embedded'];
+                var candData = eData['candidateDocument'];
+                console.log(candData)
+               //  candData = eData['candidateDocument'];
+               var tabsLinks = '';
+               var tabContents1 = '';
+               var tabContents = ''
+                for(i in candData){
+                    caDocs[count] = {};
+                    caDocs[count] = candData[i];
+                    tabsLinks += `<a>${candData[i].candidateName}</a>`;
+                    tabContents +=  `<div class="content"><a>${candData[i].documentName}</a></div>`;
+                    // tabContents +=  `<a class="content">${candData[i].documentName}</a></div>`;
+                    tabContents1 +=  `<div class="content-1"><p><img src='${candData[i].image}' style="width:600px;height:600px;padding:1rem"></p></div>`;
+                }	
+                document.getElementById('document-list').innerHTML =`<div class="tabs"><nav> ${tabsLinks}</nav>
+                ${tabContents} ${tabContents1} </div>`;
+                console.log(document.getElementById('document-list').innerHTML)	
+
+            }
+        }
+        xhttp.open("GET", url, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(dataToSend);
+         //-----------------------------------------------
+       } 
 
     $('.home-btn').on('click', function(event) {
         event.preventDefault();
